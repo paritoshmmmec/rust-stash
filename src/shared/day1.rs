@@ -1,7 +1,9 @@
+#[allow(dead_code)]
 pub fn print_me(value: &str) {
     println!("Print input value:{value}")
 }
 
+#[allow(dead_code)]
 pub fn sub_main() {
     let welcome: &str = "Hello World"; //Note the type of variable is &str
 

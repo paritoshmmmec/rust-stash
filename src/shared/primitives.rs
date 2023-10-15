@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn sub_main() {
     println!("=========== Primitives =========================");
 

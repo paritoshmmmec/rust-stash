@@ -2,7 +2,7 @@ use std::{
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
 };
-
+#[allow(dead_code)]
 pub fn sub_main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     for stream in listener.incoming() {
@@ -15,7 +15,7 @@ pub fn sub_main() {
         println!("Connection established!");
     }
 }
-
+#[allow(dead_code)]
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
     let http_request: Vec<_> = buf_reader
