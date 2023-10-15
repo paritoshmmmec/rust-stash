@@ -1,25 +1,40 @@
 #[derive(Debug)]
-pub struct Item {
-    id: i64,
-    name: String,
-    sku: String,
+struct Customer {
+    first_name: String,
+    last_name: String,
 }
 
-impl Item {
-    fn set_name(&mut self, name: String) {
-        self.name = name;
+impl Customer {
+    fn get_full_name(&self) -> String {
+        return format!("{0} {1}", &self.first_name, &self.last_name);
     }
 
-    fn set_sku(&mut self, value: String) {
-        self.sku = value;
+    fn set_full_name(&mut self) {
+        self.first_name = String::from("Mr. ");
     }
 }
 
 pub fn sub_main() {
-    let mut rug_item = Item {
-        id: 1,
-        name: String::from("Rug"),
-        sku: String::from("SKU013838"),
+    let first_customer = Customer {
+        first_name: String::from("Paritosh"),
+        last_name: String::from("Baghel"),
     };
-    rug_item.set_sku(String::from("Hello"));
+
+    let second_customer = Customer {
+        first_name: String::from("Binny"),
+        last_name: String::from("Rao"),
+    };
+
+    let mut customers = Vec::new();
+    customers.push(first_customer); //Now customer is moved into customers vector
+    customers.push(second_customer);
+
+    println!("=============== Printing customer information ================");
+
+    for customer in &mut customers {
+        customer.set_full_name();
+        println!(" {}", customer.get_full_name());
+    }
+
+    println!("==============================================================");
 }
