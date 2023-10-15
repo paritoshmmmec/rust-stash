@@ -1,21 +1,47 @@
+use std::fmt; // Import `fmt`
+
 #[derive(Debug, Default)]
 struct Customer {
     first_name: String,
     last_name: String,
     gender: Gender,
     prefix: String,
+    #[allow(dead_code)]
+    work: WorkType,
 }
 
 #[derive(Debug, Default)]
-enum Gender {
+enum WorkType {
     #[default]
+    Engineer,
+    #[allow(dead_code)]
+    Doctor,
+}
+
+impl fmt::Display for WorkType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "({})", self)
+    }
+}
+
+#[derive(Debug)]
+enum Gender {
     Male,
     Female,
 }
 
+impl Default for Gender {
+    fn default() -> Self {
+        return Gender::Male;
+    }
+}
+
 impl Customer {
     fn get_full_name(&self) -> String {
-        return format!("{} {} {}", &self.prefix, &self.first_name, &self.last_name);
+        return format!(
+            "{} {} {} {:?}",
+            &self.prefix, &self.first_name, &self.last_name, &self.work
+        );
     }
 
     fn set_prefix(&mut self) {
