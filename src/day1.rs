@@ -2,8 +2,8 @@ use regex::Regex;
 use std::env;
 use std::fs;
 use text_colorizer::*;
-
-fn main() {
+#[allow(dead_code)]
+fn sub_main() {
     let argument = parse_args();
     println!("{:?}", argument);
 

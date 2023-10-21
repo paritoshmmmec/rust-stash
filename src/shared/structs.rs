@@ -10,6 +10,20 @@ struct Customer {
     work: WorkType,
 }
 
+#[derive(Debug)]
+struct Statement {
+    #[allow(dead_code)]
+    first_name: String,
+}
+#[allow(dead_code)]
+impl Statement {
+    pub fn new(first_name: &str) -> Self {
+        Statement {
+            first_name: first_name.to_string(),
+        }
+    }
+}
+
 #[derive(Debug, Default)]
 enum WorkType {
     #[default]
@@ -17,7 +31,7 @@ enum WorkType {
     #[allow(dead_code)]
     Doctor,
 }
-
+#[allow(dead_code)]
 impl fmt::Display for WorkType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({})", self)
@@ -29,13 +43,13 @@ enum Gender {
     Male,
     Female,
 }
-
+#[allow(dead_code)]
 impl Default for Gender {
     fn default() -> Self {
         return Gender::Male;
     }
 }
-
+#[allow(dead_code)]
 impl Customer {
     fn get_full_name(&self) -> String {
         return format!(
@@ -51,8 +65,11 @@ impl Customer {
         }
     }
 }
-
+#[allow(dead_code)]
 pub fn sub_main() {
+    let statement = Statement::new("Paritosh");
+    println!("{:?}", statement);
+
     let first_customer = Customer {
         first_name: String::from("Paritosh"),
         last_name: String::from("Baghel"),
